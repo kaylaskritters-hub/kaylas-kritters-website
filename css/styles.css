@@ -745,6 +745,49 @@ section {
     color: var(--color-text-dark);
     font-style: normal;
     font-size: var(--font-size-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.review-rating {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+}
+
+.review-paw {
+    width: 16px;
+    height: auto;
+    display: inline-block;
+}
+
+.review-source {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-style: normal;
+    display: inline-block;
+    margin-right: var(--space-sm);
+}
+
+.review-date {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-style: normal;
+}
+
+.google-summary {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    background-color: var(--color-bg-cream);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.google-summary p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-dark);
 }
 
 .carousel-controls {
