@@ -35,6 +35,6 @@ const jobs = [
   //   schedule: "Monday–Friday, flexible afternoons and some weekend availability",
   //   requirements: "Reliable transportation, genuine care for animals, ability to work independently",
   //   applyInstructions: "Email your cover letter, references, and availability to:",
-  //   applyEmail: "kaylaskritters@gmail.com"
+  //   applyEmail: "kkpcjobs@gmail.com"
   // }
 ];
