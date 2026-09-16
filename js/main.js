@@ -107,22 +107,21 @@ if (carouselTrack && carouselPrev && carouselNext) {
     const reviewCount = reviewItems.length;
 
     function updateCarousel() {
-        // On mobile (1 column), show 1 review at a time
-        // On desktop (2 columns), show 2 reviews at a time
-        const itemsToShow = window.innerWidth < 1024 ? 1 : 2;
+        // Always show exactly one review at a time
+        const itemsToShow = 1;
 
-        // Calculate scroll position
-        const scrollAmount = currentIndex * (100 / itemsToShow);
+        // Calculate scroll position (100% per item for single-card view)
+        const scrollAmount = currentIndex * 100;
         carouselTrack.style.transform = `translateX(${-scrollAmount}%)`;
 
         // Update button states
         carouselPrev.disabled = currentIndex === 0;
-        carouselNext.disabled = currentIndex >= reviewCount - itemsToShow;
+        carouselNext.disabled = currentIndex >= reviewCount - 1;
 
         if (currentIndex === 0) carouselPrev.style.opacity = '0.5';
         else carouselPrev.style.opacity = '1';
 
-        if (currentIndex >= reviewCount - itemsToShow) carouselNext.style.opacity = '0.5';
+        if (currentIndex >= reviewCount - 1) carouselNext.style.opacity = '0.5';
         else carouselNext.style.opacity = '1';
     }
 
@@ -134,18 +133,16 @@ if (carouselTrack && carouselPrev && carouselNext) {
     });
 
     carouselNext.addEventListener('click', function() {
-        const itemsToShow = window.innerWidth < 1024 ? 1 : 2;
-        if (currentIndex < reviewCount - itemsToShow) {
+        if (currentIndex < reviewCount - 1) {
             currentIndex++;
             updateCarousel();
         }
     });
 
-    // Handle window resize to adjust carousel
+    // Handle window resize
     window.addEventListener('resize', function() {
-        const itemsToShow = window.innerWidth < 1024 ? 1 : 2;
-        if (currentIndex >= reviewCount - itemsToShow) {
-            currentIndex = Math.max(0, reviewCount - itemsToShow);
+        if (currentIndex >= reviewCount) {
+            currentIndex = reviewCount - 1;
         }
         updateCarousel();
     });
