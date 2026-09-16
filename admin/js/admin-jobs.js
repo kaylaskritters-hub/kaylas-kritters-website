@@ -7,20 +7,46 @@ import { collection, query, getDocs, onSnapshot, doc, setDoc, deleteDoc, serverT
 const KAYLA_UID = "p7AzNLbUlfPy3agBd1mMtePsxPa2";
 let allJobs = [];
 let currentUser = null;
+let adminJobsUnsubscribe = null;
 
 // Export setter for currentUser (called by admin-auth.js)
 export function setCurrentUser(user) {
   currentUser = user;
+
   if (user && user.uid === KAYLA_UID) {
+    // Only start the admin jobs listener when Kayla is authenticated
     loadAdminJobs();
+  } else {
+    // Unsubscribe from admin listener when user logs out or is unauthorized
+    if (adminJobsUnsubscribe) {
+      adminJobsUnsubscribe();
+      adminJobsUnsubscribe = null;
+    }
+    allJobs = [];
+    renderAdminJobsList();
   }
 }
 
+// Export function to clean up listener on logout
+export function unsubscribeAdminJobs() {
+  if (adminJobsUnsubscribe) {
+    adminJobsUnsubscribe();
+    adminJobsUnsubscribe = null;
+  }
+  allJobs = [];
+}
+
 async function loadAdminJobs() {
+  // Unsubscribe from any previous listener to avoid duplicates
+  if (adminJobsUnsubscribe) {
+    adminJobsUnsubscribe();
+  }
+
   const jobsQuery = query(collection(db, 'jobs'));
 
   // Real-time listener for all jobs (Kayla can see published and unpublished)
-  onSnapshot(jobsQuery, (snapshot) => {
+  // Only called after user is authenticated as Kayla
+  adminJobsUnsubscribe = onSnapshot(jobsQuery, (snapshot) => {
     allJobs = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
@@ -251,13 +277,9 @@ function handleJobsListClick(event) {
   }
 }
 
-// Initialize when admin panel loads
+// Setup event listeners when page loads
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    setupAdminEventListeners();
-    setTimeout(loadAdminJobs, 500);
-  });
+  document.addEventListener('DOMContentLoaded', setupAdminEventListeners);
 } else {
   setupAdminEventListeners();
-  setTimeout(loadAdminJobs, 500);
 }

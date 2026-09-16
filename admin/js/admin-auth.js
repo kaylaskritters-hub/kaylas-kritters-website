@@ -1,7 +1,7 @@
 // Admin Authentication
 import { auth } from '../../js/firebase-config.js';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-import { setCurrentUser } from './admin-jobs.js';
+import { setCurrentUser, unsubscribeAdminJobs } from './admin-jobs.js';
 
 const KAYLA_UID = "p7AzNLbUlfPy3agBd1mMtePsxPa2";
 
@@ -54,6 +54,7 @@ function handleUnauthorizedUser(email) {
 }
 
 function handleAuthLogout() {
+  unsubscribeAdminJobs();
   document.getElementById('login-form-container').style.display = 'block';
   document.getElementById('admin-panel').style.display = 'none';
   document.getElementById('login-email').value = '';
@@ -82,13 +83,25 @@ async function loginAdmin(event) {
     await signInWithEmailAndPassword(auth, email, password);
     // Success - auth state change handler will update UI
   } catch (error) {
+    // Log actual Firebase error code for debugging
+    console.error('Firebase Auth Error:', {
+      code: error.code,
+      message: error.message
+    });
+
     let message = 'Login failed. Please check your email and password.';
-    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
       message = 'Incorrect email or password.';
     } else if (error.code === 'auth/invalid-email') {
       message = 'Invalid email address.';
     } else if (error.code === 'auth/too-many-requests') {
       message = 'Too many failed attempts. Please try again later.';
+    } else if (error.code === 'auth/user-disabled') {
+      message = 'This account has been disabled.';
+    } else if (error.code === 'auth/operation-not-allowed') {
+      message = 'Email/password authentication is not enabled.';
+    } else if (error.code === 'auth/unauthorized-domain') {
+      message = 'This domain is not authorized to access this application.';
     }
     errorDisplay.textContent = message;
   } finally {
