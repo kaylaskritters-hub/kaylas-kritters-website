@@ -153,3 +153,41 @@ if (carouselTrack && carouselPrev && carouselNext) {
     // Initialize carousel
     updateCarousel();
 }
+
+// Back to Top Paw Print Button
+const backToTopButton = document.getElementById('back-to-top');
+
+if (backToTopButton) {
+    // Show/hide button based on scroll position
+    const scrollThreshold = 300; // Show after scrolling 300px
+
+    function updateBackToTopVisibility() {
+        if (window.scrollY > scrollThreshold) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    }
+
+    // Check if reduced motion is preferred
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    backToTopButton.addEventListener('click', function() {
+        if (prefersReducedMotion) {
+            // No smooth scroll if reduced motion is preferred
+            window.scrollTo(0, 0);
+        } else {
+            // Smooth scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+    // Update visibility on scroll
+    window.addEventListener('scroll', updateBackToTopVisibility);
+
+    // Initialize visibility state
+    updateBackToTopVisibility();
+}

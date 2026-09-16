@@ -1109,11 +1109,73 @@ section {
     }
 }
 
+/* ===========================
+   Back to Top Paw Print
+   =========================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    opacity: 0.8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.back-to-top:focus {
+    outline: 2px solid var(--color-text-dark);
+    outline-offset: 2px;
+}
+
+.back-to-top.visible {
+    display: flex;
+}
+
+.paw-print {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-text-light);
+}
+
+@media (max-width: 700px) {
+    .back-to-top {
+        bottom: var(--space-md);
+        right: var(--space-md);
+        width: 44px;
+        height: 44px;
+    }
+
+    .paw-print {
+        width: 20px;
+        height: 20px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .back-to-top {
+        transition-duration: 0.01ms !important;
     }
 }
