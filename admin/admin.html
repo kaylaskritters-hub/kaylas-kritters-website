@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin panel for managing Kayla's Kritters job openings.">
+    <meta name="theme-color" content="#D87BA8">
+
+    <title>Admin - Job Management | Kayla's Kritters Pet Care</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        #admin-main {
+            min-height: 100vh;
+            padding: var(--space-3xl) 0;
+            background-color: var(--color-bg-cream);
+        }
+
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        #login-form-container {
+            background-color: var(--color-bg-white);
+            padding: var(--space-3xl);
+            border-radius: var(--radius-md);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-dark);
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: var(--font-size-base);
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(216, 123, 168, 0.1);
+        }
+
+        .form-group button {
+            padding: var(--space-sm) var(--space-lg);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .form-group button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #login-error {
+            color: #d32f2f;
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-md);
+            text-align: center;
+        }
+
+        #form-error {
+            color: #d32f2f;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        #admin-panel {
+            display: none;
+            background-color: var(--color-bg-white);
+            padding: var(--space-3xl);
+            border-radius: var(--radius-md);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3xl);
+            border-bottom: 1px solid #eee;
+            padding-bottom: var(--space-lg);
+        }
+
+        .admin-header h1 {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-dark);
+        }
+
+        .admin-header button {
+            padding: var(--space-sm) var(--space-md);
+            background-color: var(--color-text-muted);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        #job-form-container {
+            display: none;
+            background-color: var(--color-bg-cream);
+            padding: var(--space-lg);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-lg);
+            border: 1px solid #ddd;
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        .button-group button {
+            flex: 1;
+            padding: var(--space-sm) var(--space-md);
+            font-weight: var(--font-weight-semibold);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+        }
+
+        .button-group button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .primary-button {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .secondary-button {
+            background-color: var(--color-text-muted);
+            color: white;
+        }
+
+        #add-job-button {
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (max-width: 700px) {
+            #login-form-container,
+            #admin-panel {
+                padding: var(--space-lg);
+            }
+
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="admin-main">
+        <div class="admin-container">
+            <!-- Login Form -->
+            <div id="login-form-container">
+                <h1 style="text-align: center; margin-bottom: var(--space-lg);">Admin Login</h1>
+                <form onsubmit="loginAdmin(); return false;">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="primary-button" style="width: 100%;">Log In</button>
+                    </div>
+                    <div id="login-error"></div>
+                </form>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="admin-panel">
+                <div class="admin-header">
+                    <div>
+                        <h1>Job Management</h1>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: var(--space-sm);">Logged in as: <span id="admin-email-display"></span></p>
+                    </div>
+                    <button onclick="logoutAdmin()">Log Out</button>
+                </div>
+
+                <button id="add-job-button" onclick="showAddJobForm()">+ Add Job Opening</button>
+
+                <!-- Job Form -->
+                <div id="job-form-container">
+                    <h2 id="form-title" style="margin-bottom: var(--space-md);">Add New Job</h2>
+                    <div id="form-error"></div>
+
+                    <input type="hidden" id="job-id-input">
+
+                    <div class="form-group">
+                        <label for="job-title-input">Job Title *</label>
+                        <input type="text" id="job-title-input" placeholder="e.g., Pet Care Team Member" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-short-description-input">Short Description *</label>
+                        <input type="text" id="job-short-description-input" placeholder="One sentence summary" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-schedule-input">Schedule *</label>
+                        <input type="text" id="job-schedule-input" placeholder="e.g., Monday–Friday, flexible afternoons">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-compensation-input">Compensation (optional)</label>
+                        <input type="text" id="job-compensation-input" placeholder="e.g., $20–$28/hour">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-location-input">Location (optional)</label>
+                        <input type="text" id="job-location-input" placeholder="e.g., Southern Rhode Island">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-requirements-input">Requirements *</label>
+                        <textarea id="job-requirements-input" placeholder="Key qualifications needed"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-details-input">Additional Details (optional)</label>
+                        <textarea id="job-details-input" placeholder="More information about the role"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" onclick="saveJob()" class="primary-button">Save Job</button>
+                        <button type="button" onclick="cancelJobForm()" class="secondary-button">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Jobs List -->
+                <h2 style="margin-top: var(--space-3xl); margin-bottom: var(--space-lg);">Your Job Openings</h2>
+                <div id="admin-jobs-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/admin-auth.js"></script>
+    <script type="module" src="js/admin-jobs.js"></script>
+</body>
+</html>
