@@ -7,7 +7,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-7cUdeJgyn42amV9hsSsff2fXp6Aejvg",
+  apiKey: "AIzaSyA-7cUdEjGyn42amV9hsSsfF2fXp6Aejvg",
   authDomain: "kaylas-kritters-pet-care.firebaseapp.com",
   projectId: "kaylas-kritters-pet-care",
   storageBucket: "kaylas-kritters-pet-care.firebasestorage.app",
