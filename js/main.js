@@ -96,59 +96,42 @@ function renderJobs() {
 // Initialize jobs on page load
 renderJobs();
 
-// Review Carousel
+// Review Carousel - Simple Show/Hide
 const carouselTrack = document.getElementById('carousel-track');
 const carouselPrev = document.getElementById('carousel-prev');
 const carouselNext = document.getElementById('carousel-next');
+const carouselCounter = document.getElementById('carousel-counter-text');
 
 if (carouselTrack && carouselPrev && carouselNext) {
-    let currentIndex = 0;
     const reviewItems = carouselTrack.querySelectorAll('.review-item');
     const reviewCount = reviewItems.length;
+    let currentReview = 0;
 
-    function updateCarousel() {
-        // Always show exactly one review at a time
-        const itemsToShow = 1;
+    function showReview(index) {
+        // Remove active from all reviews
+        reviewItems.forEach(item => item.classList.remove('active'));
 
-        // Calculate scroll position (100% per item for single-card view)
-        const scrollAmount = currentIndex * 100;
-        carouselTrack.style.transform = `translateX(${-scrollAmount}%)`;
+        // Add active to current review
+        reviewItems[index].classList.add('active');
 
-        // Update button states
-        carouselPrev.disabled = currentIndex === 0;
-        carouselNext.disabled = currentIndex >= reviewCount - 1;
-
-        if (currentIndex === 0) carouselPrev.style.opacity = '0.5';
-        else carouselPrev.style.opacity = '1';
-
-        if (currentIndex >= reviewCount - 1) carouselNext.style.opacity = '0.5';
-        else carouselNext.style.opacity = '1';
+        // Update counter
+        if (carouselCounter) {
+            carouselCounter.textContent = `${index + 1} / ${reviewCount}`;
+        }
     }
 
     carouselPrev.addEventListener('click', function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
+        currentReview = (currentReview - 1 + reviewCount) % reviewCount;
+        showReview(currentReview);
     });
 
     carouselNext.addEventListener('click', function() {
-        if (currentIndex < reviewCount - 1) {
-            currentIndex++;
-            updateCarousel();
-        }
+        currentReview = (currentReview + 1) % reviewCount;
+        showReview(currentReview);
     });
 
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (currentIndex >= reviewCount) {
-            currentIndex = reviewCount - 1;
-        }
-        updateCarousel();
-    });
-
-    // Initialize carousel
-    updateCarousel();
+    // Initialize - show first review
+    showReview(currentReview);
 }
 
 // Back to Top Paw Print Button

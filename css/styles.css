@@ -717,21 +717,34 @@ section {
 }
 
 .carousel-track {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    position: relative;
+    min-height: 300px;
     padding: var(--space-lg) 0;
-    transition: transform var(--transition-normal);
-    max-width: 750px;
-    margin: 0 auto;
 }
 
 .review-item {
+    display: none;
     background-color: var(--color-bg-white);
     padding: var(--space-lg);
     border-radius: var(--radius-md);
     border-left: 4px solid var(--color-primary);
     box-shadow: var(--shadow-sm);
+    max-width: min(90%, 700px);
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.review-item.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .review-text {
@@ -800,9 +813,21 @@ section {
     color: var(--color-text-dark);
 }
 
-.carousel-btn:hover {
+.carousel-btn:hover:not(:disabled) {
     border-color: var(--color-primary);
     color: var(--color-primary);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carousel-counter {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-md);
 }
 
 /* ===========================
