@@ -43,9 +43,14 @@ function handleUnauthorizedUser(email) {
     <div style="text-align: center; padding: var(--space-3xl); color: var(--color-text-muted);">
       <p style="font-size: var(--font-size-base); margin-bottom: var(--space-md);">Access Denied</p>
       <p style="font-size: var(--font-size-sm); margin-bottom: var(--space-lg);">This admin panel is not available for your account.</p>
-      <button onclick="logoutAdmin()" style="padding: var(--space-sm) var(--space-md); background-color: var(--color-primary); color: var(--color-text-light); border: none; border-radius: var(--radius-sm); cursor: pointer; font-weight: var(--font-weight-semibold);">Log Out</button>
+      <button id="access-denied-logout" style="padding: var(--space-sm) var(--space-md); background-color: var(--color-primary); color: var(--color-text-light); border: none; border-radius: var(--radius-sm); cursor: pointer; font-weight: var(--font-weight-semibold);">Log Out</button>
     </div>
   `;
+
+  const deniedLogoutBtn = document.getElementById('access-denied-logout');
+  if (deniedLogoutBtn) {
+    deniedLogoutBtn.addEventListener('click', logoutAdmin);
+  }
 }
 
 function handleAuthLogout() {
@@ -56,7 +61,9 @@ function handleAuthLogout() {
   document.getElementById('login-error').textContent = '';
 }
 
-async function loginAdmin() {
+async function loginAdmin(event) {
+  event.preventDefault();
+
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
   const errorDisplay = document.getElementById('login-error');
@@ -66,7 +73,7 @@ async function loginAdmin() {
     return;
   }
 
-  const loginButton = event.target;
+  const loginButton = document.getElementById('login-button');
   loginButton.disabled = true;
   loginButton.textContent = 'Logging in...';
   errorDisplay.textContent = '';
@@ -90,7 +97,11 @@ async function loginAdmin() {
   }
 }
 
-async function logoutAdmin() {
+async function logoutAdmin(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
   try {
     await signOut(auth);
     // Success - auth state change handler will update UI
@@ -101,8 +112,25 @@ async function logoutAdmin() {
 }
 
 // Initialize when page loads
+function setupEventListeners() {
+  const loginForm = document.getElementById('admin-login-form');
+  const logoutButton = document.getElementById('logout-button');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', loginAdmin);
+  }
+
+  if (logoutButton) {
+    logoutButton.addEventListener('click', logoutAdmin);
+  }
+}
+
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeAdminAuth);
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeAdminAuth();
+    setupEventListeners();
+  });
 } else {
   initializeAdminAuth();
+  setupEventListeners();
 }

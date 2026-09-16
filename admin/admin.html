@@ -199,7 +199,7 @@
             <!-- Login Form -->
             <div id="login-form-container">
                 <h1 style="text-align: center; margin-bottom: var(--space-lg);">Admin Login</h1>
-                <form onsubmit="loginAdmin(); return false;">
+                <form id="admin-login-form">
                     <div class="form-group">
                         <label for="login-email">Email</label>
                         <input type="email" id="login-email" required>
@@ -209,7 +209,7 @@
                         <input type="password" id="login-password" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="primary-button" style="width: 100%;">Log In</button>
+                        <button type="submit" id="login-button" class="primary-button" style="width: 100%;">Log In</button>
                     </div>
                     <div id="login-error"></div>
                 </form>
@@ -222,10 +222,10 @@
                         <h1>Job Management</h1>
                         <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: var(--space-sm);">Logged in as: <span id="admin-email-display"></span></p>
                     </div>
-                    <button onclick="logoutAdmin()">Log Out</button>
+                    <button id="logout-button">Log Out</button>
                 </div>
 
-                <button id="add-job-button" onclick="showAddJobForm()">+ Add Job Opening</button>
+                <button id="add-job-button">+ Add Job Opening</button>
 
                 <!-- Job Form -->
                 <div id="job-form-container">
@@ -270,8 +270,8 @@
                     </div>
 
                     <div class="button-group">
-                        <button type="button" onclick="saveJob()" class="primary-button">Save Job</button>
-                        <button type="button" onclick="cancelJobForm()" class="secondary-button">Cancel</button>
+                        <button type="button" id="save-job-button" class="primary-button">Save Job</button>
+                        <button type="button" id="cancel-job-button" class="secondary-button">Cancel</button>
                     </div>
                 </div>
 

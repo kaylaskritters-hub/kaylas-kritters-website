@@ -53,9 +53,9 @@ function renderAdminJobsList() {
           </div>
         </div>
         <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
-          <button onclick="editJob('${job.id}')" style="padding: 6px 12px; background-color: var(--color-primary); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Edit</button>
-          <button onclick="togglePublish('${job.id}', ${!job.active})" style="padding: 6px 12px; background-color: ${job.active ? 'var(--color-text-muted)' : 'var(--color-primary)'}; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">${job.active ? 'Unpublish' : 'Publish'}</button>
-          <button onclick="deleteJob('${job.id}')" style="padding: 6px 12px; background-color: #d32f2f; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Delete</button>
+          <button data-action="edit" data-job-id="${job.id}" style="padding: 6px 12px; background-color: var(--color-primary); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Edit</button>
+          <button data-action="${job.active ? 'unpublish' : 'publish'}" data-job-id="${job.id}" style="padding: 6px 12px; background-color: ${job.active ? 'var(--color-text-muted)' : 'var(--color-primary)'}; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">${job.active ? 'Unpublish' : 'Publish'}</button>
+          <button data-action="delete" data-job-id="${job.id}" style="padding: 6px 12px; background-color: #d32f2f; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Delete</button>
         </div>
       </div>
     `;
@@ -101,7 +101,11 @@ async function editJob(jobId) {
   document.getElementById('job-title-input').focus();
 }
 
-async function saveJob() {
+async function saveJob(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
   const jobId = document.getElementById('job-id-input').value.trim();
   const title = document.getElementById('job-title-input').value.trim();
   const shortDescription = document.getElementById('job-short-description-input').value.trim();
@@ -119,7 +123,7 @@ async function saveJob() {
     return;
   }
 
-  const saveButton = event.target;
+  const saveButton = document.getElementById('save-job-button');
   saveButton.disabled = true;
   saveButton.textContent = 'Saving...';
 
@@ -201,11 +205,59 @@ function escapeHtml(text) {
   return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+// Setup event listeners for admin controls
+function setupAdminEventListeners() {
+  const addJobButton = document.getElementById('add-job-button');
+  const saveJobButton = document.getElementById('save-job-button');
+  const cancelJobButton = document.getElementById('cancel-job-button');
+  const jobsList = document.getElementById('admin-jobs-list');
+
+  if (addJobButton) {
+    addJobButton.addEventListener('click', showAddJobForm);
+  }
+
+  if (saveJobButton) {
+    saveJobButton.addEventListener('click', saveJob);
+  }
+
+  if (cancelJobButton) {
+    cancelJobButton.addEventListener('click', cancelJobForm);
+  }
+
+  if (jobsList) {
+    jobsList.addEventListener('click', handleJobsListClick);
+  }
+}
+
+// Event delegation handler for dynamic job buttons
+function handleJobsListClick(event) {
+  const editBtn = event.target.closest('button[data-action="edit"]');
+  const publishBtn = event.target.closest('button[data-action="publish"]');
+  const publishBtnUnpublish = event.target.closest('button[data-action="unpublish"]');
+  const deleteBtn = event.target.closest('button[data-action="delete"]');
+
+  if (editBtn) {
+    const jobId = editBtn.dataset.jobId;
+    editJob(jobId);
+  } else if (publishBtn) {
+    const jobId = publishBtn.dataset.jobId;
+    togglePublish(jobId, true);
+  } else if (publishBtnUnpublish) {
+    const jobId = publishBtnUnpublish.dataset.jobId;
+    togglePublish(jobId, false);
+  } else if (deleteBtn) {
+    const jobId = deleteBtn.dataset.jobId;
+    deleteJob(jobId);
+  }
+}
+
 // Initialize when admin panel loads
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
+    setupAdminEventListeners();
     setTimeout(loadAdminJobs, 500);
   });
 } else {
+  setupAdminEventListeners();
   setTimeout(loadAdminJobs, 500);
 }
