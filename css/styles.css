@@ -714,12 +714,17 @@ section {
 .carousel {
     position: relative;
     margin: var(--space-xl) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    min-height: 400px;
 }
 
 .carousel-track {
     position: relative;
-    min-height: 300px;
-    padding: var(--space-lg) 0;
+    width: min(90%, 700px);
+    perspective: 1000px;
 }
 
 .review-item {
@@ -728,14 +733,40 @@ section {
     padding: var(--space-lg);
     border-radius: var(--radius-md);
     border-left: 4px solid var(--color-primary);
-    box-shadow: var(--shadow-sm);
-    max-width: min(90%, 700px);
-    margin: 0 auto;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        8px 8px 0 -2px var(--color-bg-cream),
+        16px 16px 0 -4px var(--color-bg-cream);
     animation: fadeIn 0.3s ease-in;
+    position: relative;
 }
 
 .review-item.active {
     display: block;
+}
+
+.review-item::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -8px;
+    bottom: -8px;
+    background-color: var(--color-bg-cream);
+    border-radius: var(--radius-md);
+    z-index: -1;
+}
+
+.review-item::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: -16px;
+    bottom: -16px;
+    background-color: var(--color-bg-cream);
+    border-radius: var(--radius-md);
+    z-index: -2;
 }
 
 @keyframes fadeIn {
@@ -792,42 +823,42 @@ section {
 
 .carousel-controls {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: var(--space-md);
-    margin-top: var(--space-lg);
+    order: -1;
+}
+
+.carousel-controls #carousel-next {
+    order: 2;
 }
 
 .carousel-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--color-border);
+    border: 2px solid var(--color-primary);
     background-color: var(--color-bg-white);
     cursor: pointer;
-    font-size: var(--font-size-lg);
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all var(--transition-fast);
     font-family: var(--font-family-sans);
-    color: var(--color-text-dark);
-}
-
-.carousel-btn:hover:not(:disabled) {
-    border-color: var(--color-primary);
     color: var(--color-primary);
+    flex-shrink: 0;
 }
 
-.carousel-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+.carousel-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    box-shadow: 0 2px 8px rgba(216, 123, 168, 0.3);
 }
 
-.carousel-counter {
-    text-align: center;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    margin-top: var(--space-md);
+.carousel-btn:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 /* ===========================

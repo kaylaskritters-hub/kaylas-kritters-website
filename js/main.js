@@ -100,7 +100,6 @@ renderJobs();
 const carouselTrack = document.getElementById('carousel-track');
 const carouselPrev = document.getElementById('carousel-prev');
 const carouselNext = document.getElementById('carousel-next');
-const carouselCounter = document.getElementById('carousel-counter-text');
 
 if (carouselTrack && carouselPrev && carouselNext) {
     const reviewItems = carouselTrack.querySelectorAll('.review-item');
@@ -114,10 +113,6 @@ if (carouselTrack && carouselPrev && carouselNext) {
         // Add active to current review
         reviewItems[index].classList.add('active');
 
-        // Update counter
-        if (carouselCounter) {
-            carouselCounter.textContent = `${index + 1} / ${reviewCount}`;
-        }
     }
 
     carouselPrev.addEventListener('click', function() {
