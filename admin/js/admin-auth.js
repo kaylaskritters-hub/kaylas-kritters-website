@@ -1,14 +1,23 @@
 // Admin Authentication
 import { auth } from '../../js/firebase-config.js';
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 import { setCurrentUser, unsubscribeAdminJobs } from './admin-jobs.js';
 
 const KAYLA_UID = "p7AzNLbUlfPy3agBd1mMtePsxPa2";
+const INACTIVITY_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes
 
 let currentUser = null;
+let inactivityTimer = null;
 
 async function initializeAdminAuth() {
   // Firebase is ready to use
+
+  // Configure session-based persistence (not persistent across browser restarts)
+  try {
+    await setPersistence(auth, browserSessionPersistence);
+  } catch (error) {
+    console.error('Failed to set persistence:', error);
+  }
 
   // Monitor auth state
   onAuthStateChanged(auth, (user) => {
@@ -22,12 +31,36 @@ async function initializeAdminAuth() {
   });
 }
 
+function resetInactivityTimer() {
+  // Clear existing timer if present
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+  }
+
+  // Only set a new timer if Kayla is authenticated
+  if (currentUser && currentUser.uid === KAYLA_UID) {
+    inactivityTimer = setTimeout(() => {
+      // Auto-logout after inactivity
+      signOut(auth).catch(err => console.error('Auto-logout failed:', err));
+    }, INACTIVITY_TIMEOUT_MS);
+  }
+}
+
+function clearInactivityTimer() {
+  if (inactivityTimer) {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = null;
+  }
+}
+
 function handleAuthSuccess(user) {
   if (user.uid === KAYLA_UID) {
     // Kayla is logged in
     document.getElementById('login-form-container').style.display = 'none';
     document.getElementById('admin-panel').style.display = 'block';
     document.getElementById('admin-email-display').textContent = user.email;
+    // Start inactivity timer for Kayla's session
+    resetInactivityTimer();
   } else {
     // Non-Kayla user logged in - not authorized
     handleUnauthorizedUser(user.email);
@@ -54,6 +87,8 @@ function handleUnauthorizedUser(email) {
 }
 
 function handleAuthLogout() {
+  // Clear inactivity timer when user logs out
+  clearInactivityTimer();
   unsubscribeAdminJobs();
   document.getElementById('login-form-container').style.display = 'block';
   document.getElementById('admin-panel').style.display = 'none';
@@ -128,6 +163,7 @@ async function logoutAdmin(event) {
 function setupEventListeners() {
   const loginForm = document.getElementById('admin-login-form');
   const logoutButton = document.getElementById('logout-button');
+  const adminPanel = document.getElementById('admin-panel');
 
   if (loginForm) {
     loginForm.addEventListener('submit', loginAdmin);
@@ -135,6 +171,14 @@ function setupEventListeners() {
 
   if (logoutButton) {
     logoutButton.addEventListener('click', logoutAdmin);
+  }
+
+  // Track user activity to reset inactivity timer
+  if (adminPanel) {
+    adminPanel.addEventListener('mousemove', resetInactivityTimer);
+    adminPanel.addEventListener('keydown', resetInactivityTimer);
+    adminPanel.addEventListener('click', resetInactivityTimer);
+    adminPanel.addEventListener('touchstart', resetInactivityTimer);
   }
 }
 
