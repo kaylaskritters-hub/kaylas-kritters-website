@@ -239,7 +239,7 @@ img {
 
 .brand-area {
     background-color: var(--color-bg-white);
-    padding: var(--space-lg) 0 var(--space-lg) 0;
+    padding: var(--space-sm) 0 var(--space-lg) 0;
     text-align: center;
 }
 
@@ -253,7 +253,7 @@ img {
 .brand-logo img {
     width: min(85vw, 1400px);
     height: auto;
-    transform: translateY(-4%);
+    transform: translateY(-16%);
 }
 
 .photo-ribbon {
@@ -1070,7 +1070,7 @@ section {
     }
 
     .brand-area {
-        padding: var(--space-xl) 0 var(--space-md) 0;
+        padding: var(--space-md) 0 var(--space-md) 0;
     }
 
     .brand-logo {
