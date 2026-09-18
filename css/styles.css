@@ -244,16 +244,17 @@ img {
 }
 
 .brand-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto var(--space-lg);
-    text-align: center;
-    overflow: hidden;
-    max-height: clamp(220px, 57vw, 680px);
+    overflow: visible;
 }
 
 .brand-logo img {
-    width: min(85vw, 1400px);
+    width: min(85vw, 700px);
     height: auto;
-    transform: translateY(-16%);
+    display: block;
 }
 
 .photo-ribbon {
@@ -1165,7 +1166,7 @@ section {
 
 @media (max-width: 640px) {
     .brand-logo img {
-        width: min(90vw, 550px);
+        width: min(90vw, 350px);
     }
 
     .brand-supporting {
