@@ -128,7 +128,7 @@
             </div>
 
             <div class="brand-cta">
-                <a href="mailto:kaylaskritters@gmail.com" class="btn-primary">Request Pet Care</a>
+                <button type="button" class="btn-primary" data-open-inquiry>Request Pet Care</button>
             </div>
         </div>
     </div>
@@ -498,7 +498,8 @@
                     <div class="journey-item">
                         <h3>New Clients</h3>
                         <p>Ready to talk about care for your pet?</p>
-                        <a href="mailto:kaylaskritters@gmail.com" class="btn-primary">Email Kayla's Kritters</a>
+                        <button type="button" class="btn-primary" data-open-inquiry>Request Pet Care</button>
+                        <p class="inquiry-email-option">Prefer email? <a href="mailto:kaylaskritters@gmail.com">Email Kayla's Kritters</a>.</p>
                     </div>
                     <div class="journey-item">
                         <h3>Existing Clients</h3>
@@ -511,6 +512,75 @@
     </section>
 
     </main>
+
+    <dialog id="inquiry-dialog" class="inquiry-dialog" aria-labelledby="inquiry-title" aria-describedby="inquiry-intro">
+        <div class="inquiry-dialog__header">
+            <div>
+                <h2 id="inquiry-title">Request Pet Care</h2>
+                <p id="inquiry-intro">Tell us a little about the care you need. This inquiry is not a booking.</p>
+            </div>
+            <button type="button" class="inquiry-close" aria-label="Close request form">&times;</button>
+        </div>
+
+        <form id="pet-care-inquiry" name="pet-care-inquiry" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="pet-care-inquiry">
+            <input type="hidden" name="pets" id="inquiry-pets-summary">
+            <p class="inquiry-honeypot"><label>Leave this field blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+            <fieldset>
+                <legend>Contact</legend>
+                <div class="inquiry-grid">
+                    <div class="inquiry-field"><label for="inquiry-name">Full name <span aria-hidden="true">*</span></label><input id="inquiry-name" name="full-name" type="text" autocomplete="name" required maxlength="120"></div>
+                    <div class="inquiry-field"><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
+                    <div class="inquiry-field"><label for="inquiry-phone">Phone number</label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+                    <div class="inquiry-field"><label for="inquiry-town">Town <span aria-hidden="true">*</span></label><input id="inquiry-town" name="town" type="text" autocomplete="address-level2" required maxlength="100"></div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Care</legend>
+                <div class="inquiry-grid">
+                    <div class="inquiry-field"><label for="inquiry-service">Service requested <span aria-hidden="true">*</span></label><select id="inquiry-service" name="service" required><option value="">Choose a service</option><option>Dog Walking</option><option>Pet Sitting / Drop-in Visits</option><option>Overnight Care</option><option>Other</option></select></div>
+                    <div class="inquiry-field"><label for="inquiry-frequency">Care frequency <span aria-hidden="true">*</span></label><select id="inquiry-frequency" name="frequency" required><option value="">Choose a frequency</option><option value="one-time">One-time / Specific Dates</option><option value="recurring">Recurring / Ongoing</option><option value="unsure">Not Sure Yet</option></select></div>
+                </div>
+                <div id="inquiry-one-time" class="inquiry-conditional inquiry-grid" hidden>
+                    <div class="inquiry-field"><label for="inquiry-start">Start date <span aria-hidden="true">*</span></label><input id="inquiry-start" name="start-date" type="date"></div>
+                    <div class="inquiry-field"><label for="inquiry-end">End date <span aria-hidden="true">*</span></label><input id="inquiry-end" name="end-date" type="date"></div>
+                </div>
+                <div id="inquiry-recurring" class="inquiry-conditional inquiry-grid" hidden>
+                    <div class="inquiry-field"><label for="inquiry-preferred-start">Preferred start date</label><input id="inquiry-preferred-start" name="preferred-start-date" type="date"></div>
+                    <div class="inquiry-field"><label for="inquiry-recurring-days">Preferred days or frequency <span aria-hidden="true">*</span></label><input id="inquiry-recurring-days" name="recurring-days" type="text" maxlength="200" placeholder="For example, weekday mornings"></div>
+                </div>
+                <div id="inquiry-unsure" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-date-notes">What do you know about your timing?</label><textarea id="inquiry-date-notes" name="date-notes" rows="2" maxlength="400"></textarea></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Pets</legend>
+                <div id="inquiry-pet-list">
+                    <div class="inquiry-pet" data-pet>
+                        <div class="inquiry-pet__heading"><h3>Pet 1</h3><button type="button" class="inquiry-remove-pet" hidden>Remove Pet</button></div>
+                        <div class="inquiry-grid">
+                            <div class="inquiry-field"><label for="pet-name-1">Pet name <span aria-hidden="true">*</span></label><input id="pet-name-1" data-pet-name type="text" required maxlength="100"></div>
+                            <div class="inquiry-field"><label for="pet-type-1">Pet type <span aria-hidden="true">*</span></label><input id="pet-type-1" data-pet-type type="text" required maxlength="100" placeholder="For example, dog or cat"></div>
+                        </div>
+                        <div class="inquiry-field"><label for="pet-needs-1">Medications or special care needs (brief)</label><textarea id="pet-needs-1" data-pet-needs rows="2" maxlength="500"></textarea></div>
+                    </div>
+                </div>
+                <button type="button" id="inquiry-add-pet" class="inquiry-secondary">Add Another Pet</button>
+            </fieldset>
+
+            <div class="inquiry-field"><label for="inquiry-comments">Additional comments or questions</label><textarea id="inquiry-comments" name="comments" rows="3" maxlength="1500"></textarea></div>
+            <p class="inquiry-privacy">We use your details to respond to this inquiry. Please do not include payment information or detailed medical histories. You can also <a href="mailto:kaylaskritters@gmail.com">email us directly</a>.</p>
+            <p id="inquiry-error" class="inquiry-error" role="alert" tabindex="-1" hidden></p>
+            <div class="inquiry-actions"><button type="button" class="inquiry-secondary inquiry-cancel">Cancel</button><button type="submit" class="btn-primary" id="inquiry-submit">Send Inquiry</button></div>
+        </form>
+
+        <div id="inquiry-success" class="inquiry-success" role="status" hidden>
+            <h3 tabindex="-1">Thank you for reaching out.</h3>
+            <p>Your inquiry was sent. Kayla's Kritters will review it and follow up. This is not a confirmed booking.</p>
+            <button type="button" class="btn-primary inquiry-done">Done</button>
+        </div>
+    </dialog>
 
     <!-- Footer -->
     <footer class="footer">
@@ -552,5 +622,6 @@
     </button>
 
     <script src="js/main.js"></script>
+    <script src="js/inquiry-form.js"></script>
 </body>
 </html>
