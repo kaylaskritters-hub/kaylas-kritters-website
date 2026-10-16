@@ -543,6 +543,7 @@
                     <div class="inquiry-field"><label for="inquiry-service">Service requested <span aria-hidden="true">*</span></label><select id="inquiry-service" name="service" required><option value="">Choose a service</option><option>Dog Walking</option><option>Pet Sitting / Drop-in Visits</option><option>Overnight Care</option><option>Other</option></select></div>
                     <div class="inquiry-field"><label for="inquiry-frequency">Care frequency <span aria-hidden="true">*</span></label><select id="inquiry-frequency" name="frequency" required><option value="">Choose a frequency</option><option value="one-time">One-time / Specific Dates</option><option value="recurring">Recurring / Ongoing</option><option value="unsure">Not Sure Yet</option></select></div>
                 </div>
+                <div id="inquiry-other-service" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-other-service-description">Describe the service you need <span aria-hidden="true">*</span></label><input id="inquiry-other-service-description" name="other-service-description" type="text" maxlength="300"></div>
                 <div id="inquiry-one-time" class="inquiry-conditional inquiry-grid" hidden>
                     <div class="inquiry-field"><label for="inquiry-start">Start date <span aria-hidden="true">*</span></label><input id="inquiry-start" name="start-date" type="date"></div>
                     <div class="inquiry-field"><label for="inquiry-end">End date <span aria-hidden="true">*</span></label><input id="inquiry-end" name="end-date" type="date"></div>
@@ -551,7 +552,7 @@
                     <div class="inquiry-field"><label for="inquiry-preferred-start">Preferred start date</label><input id="inquiry-preferred-start" name="preferred-start-date" type="date"></div>
                     <div class="inquiry-field"><label for="inquiry-recurring-days">Preferred days or frequency <span aria-hidden="true">*</span></label><input id="inquiry-recurring-days" name="recurring-days" type="text" maxlength="200" placeholder="For example, weekday mornings"></div>
                 </div>
-                <div id="inquiry-unsure" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-date-notes">What do you know about your timing?</label><textarea id="inquiry-date-notes" name="date-notes" rows="2" maxlength="400"></textarea></div>
+                <div id="inquiry-unsure" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-date-notes">Tell us about your scheduling needs</label><textarea id="inquiry-date-notes" name="date-notes" rows="2" maxlength="400"></textarea></div>
             </fieldset>
 
             <fieldset>
@@ -562,6 +563,8 @@
                         <div class="inquiry-grid">
                             <div class="inquiry-field"><label for="pet-name-1">Pet name <span aria-hidden="true">*</span></label><input id="pet-name-1" data-pet-name type="text" required maxlength="100"></div>
                             <div class="inquiry-field"><label for="pet-type-1">Pet type <span aria-hidden="true">*</span></label><input id="pet-type-1" data-pet-type type="text" required maxlength="100" placeholder="For example, dog or cat"></div>
+                            <div class="inquiry-field"><label for="pet-breed-1">Breed</label><input id="pet-breed-1" data-pet-breed type="text" maxlength="100"></div>
+                            <div class="inquiry-field"><label for="pet-size-1">Size</label><select id="pet-size-1" data-pet-size><option value="">Select if known</option><option>Small</option><option>Medium</option><option>Large</option></select></div>
                         </div>
                         <div class="inquiry-field"><label for="pet-needs-1">Medications or special care needs (brief)</label><textarea id="pet-needs-1" data-pet-needs rows="2" maxlength="500"></textarea></div>
                     </div>

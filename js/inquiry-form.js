@@ -8,6 +8,9 @@ if (inquiryDialog && inquiryForm) {
     const doneButton = inquiryDialog.querySelector('.inquiry-done');
     const addPetButton = document.getElementById('inquiry-add-pet');
     const petList = document.getElementById('inquiry-pet-list');
+    const service = document.getElementById('inquiry-service');
+    const otherServicePanel = document.getElementById('inquiry-other-service');
+    const otherServiceDescription = document.getElementById('inquiry-other-service-description');
     const frequency = document.getElementById('inquiry-frequency');
     const startDate = document.getElementById('inquiry-start');
     const endDate = document.getElementById('inquiry-end');
@@ -58,6 +61,13 @@ if (inquiryDialog && inquiryForm) {
         updateDates();
     }
 
+    function updateService() {
+        const isOther = service.value === 'Other';
+        otherServicePanel.hidden = !isOther;
+        otherServiceDescription.disabled = !isOther;
+        otherServiceDescription.required = isOther;
+    }
+
     function updatePetControls() {
         const pets = [...petList.querySelectorAll('[data-pet]')];
         pets.forEach((pet, index) => {
@@ -69,7 +79,7 @@ if (inquiryDialog && inquiryForm) {
     function addPet() {
         const pet = originalPet.cloneNode(true);
         const id = nextPetId++;
-        for (const kind of ['name', 'type', 'needs']) {
+        for (const kind of ['name', 'type', 'breed', 'size', 'needs']) {
             const field = pet.querySelector(`[data-pet-${kind}]`);
             const label = pet.querySelector(`label[for="${field.id}"]`);
             field.id = `pet-${kind}-${id}`;
@@ -82,12 +92,29 @@ if (inquiryDialog && inquiryForm) {
     }
 
     function petSummary() {
-        return [...petList.querySelectorAll('[data-pet]')].map((pet, index) => {
-            const name = pet.querySelector('[data-pet-name]').value.trim();
-            const type = pet.querySelector('[data-pet-type]').value.trim();
-            const needs = pet.querySelector('[data-pet-needs]').value.trim().replace(/\s+/g, ' ');
-            return `Pet ${index + 1}: ${name} | Type: ${type} | Medications or special care: ${needs || 'None provided'}`;
-        }).join('\n');
+        const pets = [...petList.querySelectorAll('[data-pet]')].map(pet => ({
+            name: pet.querySelector('[data-pet-name]').value.trim(),
+            type: pet.querySelector('[data-pet-type]').value.trim(),
+            breed: pet.querySelector('[data-pet-breed]').value.trim(),
+            size: pet.querySelector('[data-pet-size]').value,
+            specialCare: pet.querySelector('[data-pet-needs]').value.trim()
+        }));
+        return JSON.stringify(pets, null, 2);
+    }
+
+    function submissionData() {
+        const data = new FormData(inquiryForm);
+        const scheduleFields = ['start-date', 'end-date', 'preferred-start-date', 'recurring-days', 'date-notes'];
+        const allowed = {
+            'one-time': ['start-date', 'end-date'],
+            recurring: ['preferred-start-date', 'recurring-days'],
+            unsure: ['date-notes']
+        }[frequency.value] || [];
+        scheduleFields.forEach(name => {
+            if (!allowed.includes(name) || !data.get(name)) data.delete(name);
+        });
+        if (service.value !== 'Other') data.delete('other-service-description');
+        return data;
     }
 
     function resetAfterSuccess() {
@@ -96,6 +123,7 @@ if (inquiryDialog && inquiryForm) {
         nextPetId = 2;
         updatePetControls();
         updateFrequency();
+        updateService();
         inquiryForm.hidden = false;
         successMessage.hidden = true;
         submittedSuccessfully = false;
@@ -151,8 +179,10 @@ if (inquiryDialog && inquiryForm) {
         addPetButton.focus();
     });
     frequency.addEventListener('change', updateFrequency);
+    service.addEventListener('change', updateService);
     [startDate, endDate].forEach(input => input.addEventListener('input', updateDates));
     updateFrequency();
+    updateService();
 
     inquiryForm.addEventListener('submit', async event => {
         event.preventDefault();
@@ -169,7 +199,7 @@ if (inquiryDialog && inquiryForm) {
             const response = await fetch(inquiryForm.action, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(inquiryForm)).toString(),
+                body: new URLSearchParams(submissionData()).toString(),
                 signal: requestController.signal
             });
             if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
