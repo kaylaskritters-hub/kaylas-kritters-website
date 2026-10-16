@@ -40,7 +40,7 @@ function renderPublicJobs(jobs) {
     jobsList.innerHTML = `
       <p class="jobs-empty">We're not currently hiring, but check back frequently for new opportunities.</p>
       <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: var(--space-md);">Interested in working with Kayla's Kritters? You can send your resume or introduce yourself anytime.</p>
-      <p style="margin-top: var(--space-md);"><a href="mailto:kkpcjobs@gmail.com" style="color: var(--color-primary); text-decoration: none; font-weight: var(--font-weight-semibold);">kkpcjobs@gmail.com</a></p>
+      <p style="margin-top: var(--space-md);"><a href="mailto:kkpcjobs@gmail.com" style="font-weight: var(--font-weight-semibold);">kkpcjobs@gmail.com</a></p>
     `;
     return;
   }
@@ -57,14 +57,14 @@ function renderPublicJobs(jobs) {
 
     jobsHTML += `
       <div class="job-item">
-        <div class="job-title">${safeTitle}</div>
+        <h2 class="job-title">${safeTitle}</h2>
         <div class="job-short-description" style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-md);">${safeShortDescription}</div>
         ${safeSchedule ? `<div class="job-detail"><span class="job-detail-label">Schedule:</span> ${safeSchedule}</div>` : ''}
         ${safeCompensation ? `<div class="job-detail"><span class="job-detail-label">Compensation:</span> ${safeCompensation}</div>` : ''}
         ${safeLocation ? `<div class="job-detail"><span class="job-detail-label">Location:</span> ${safeLocation}</div>` : ''}
         <div class="job-detail"><span class="job-detail-label">Requirements:</span> ${safeRequirements}</div>
         ${safeAdditionalDetails ? `<div class="job-detail"><span class="job-detail-label">Details:</span> ${safeAdditionalDetails}</div>` : ''}
-        <div style="margin-top: var(--space-md);"><a href="mailto:kkpcjobs@gmail.com" style="color: var(--color-primary); text-decoration: none; font-weight: var(--font-weight-semibold);">Apply: kkpcjobs@gmail.com</a></div>
+        <div style="margin-top: var(--space-md);"><a href="mailto:kkpcjobs@gmail.com" style="font-weight: var(--font-weight-semibold);">Apply: kkpcjobs@gmail.com</a></div>
       </div>
     `;
   });
@@ -78,7 +78,7 @@ function renderJobsError() {
 
   jobsList.innerHTML = `
     <p class="jobs-empty">We're temporarily unable to load our job listings. Please check back shortly.</p>
-    <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: var(--space-md);">You can also reach us at <a href="mailto:kkpcjobs@gmail.com" style="color: var(--color-primary);">kkpcjobs@gmail.com</a></p>
+    <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: var(--space-md);">You can also reach us at <a href="mailto:kkpcjobs@gmail.com">kkpcjobs@gmail.com</a></p>
   `;
 }
 

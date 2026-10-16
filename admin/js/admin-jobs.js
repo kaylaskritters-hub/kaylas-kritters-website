@@ -79,8 +79,8 @@ function renderAdminJobsList() {
           </div>
         </div>
         <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
-          <button data-action="edit" data-job-id="${job.id}" style="padding: 6px 12px; background-color: var(--color-primary); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Edit</button>
-          <button data-action="${job.active ? 'unpublish' : 'publish'}" data-job-id="${job.id}" style="padding: 6px 12px; background-color: ${job.active ? 'var(--color-text-muted)' : 'var(--color-primary)'}; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">${job.active ? 'Unpublish' : 'Publish'}</button>
+          <button data-action="edit" data-job-id="${job.id}" style="padding: 6px 12px; background-color: var(--color-primary); color: var(--color-text-dark); border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Edit</button>
+          <button data-action="${job.active ? 'unpublish' : 'publish'}" data-job-id="${job.id}" style="padding: 6px 12px; background-color: ${job.active ? 'var(--color-text-muted)' : 'var(--color-primary)'}; color: ${job.active ? 'white' : 'var(--color-text-dark)'}; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">${job.active ? 'Unpublish' : 'Publish'}</button>
           <button data-action="delete" data-job-id="${job.id}" style="padding: 6px 12px; background-color: #d32f2f; color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: var(--font-size-xs);">Delete</button>
         </div>
       </div>

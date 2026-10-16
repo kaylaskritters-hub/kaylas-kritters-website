@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kayla's Kritters Pet Care - Compassionate in-home pet care serving Southern Rhode Island since 2010. Insured and CPR certified.">
+    <meta name="description" content="Dog walking, pet sitting and in-home overnight care in Richmond, Hope Valley, Wakefield, Kingston, Charlestown and West Kingston, RI. Contact Kayla's Kritters.">
     <meta name="theme-color" content="#D87BA8">
 
     <!-- Canonical URL -->
@@ -63,14 +63,18 @@
     </script>
 
     <title>Kayla's Kritters Pet Care | Pet Sitting & Dog Walking in Southern RI</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-180.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Header & Navigation -->
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
-                <nav class="nav">
+                <nav class="nav" id="site-navigation" aria-label="Primary navigation">
                     <ul class="nav__list">
                         <li><a href="#services" class="nav__link">Services</a></li>
                         <li><a href="#rates" class="nav__link">Rates</a></li>
@@ -81,7 +85,7 @@
                         <li><a href="https://www.timetopet.com/portal/kaylas-kritters-pet-care" class="btn-portal" target="_blank" rel="noopener noreferrer">Client Portal</a></li>
                     </ul>
                 </nav>
-                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-controls="site-navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -90,27 +94,28 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Brand & Opening Composition -->
     <div class="brand-area">
         <div class="container">
             <div class="brand-logo">
-                <img src="assets/images/kkpclogotransparent.png" alt="Kayla's Kritters Pet Care - Compassionate In-Home Pet Care">
+                <img src="assets/images/kkpclogotransparent.webp" width="900" height="360" fetchpriority="high" alt="Kayla's Kritters Pet Care - Compassionate In-Home Pet Care">
             </div>
 
             <h1 style="font-size: var(--font-size-lg); text-align: center; margin: var(--space-md) 0 var(--space-lg) 0; color: var(--color-text-dark); font-weight: var(--font-weight-semibold);">Compassionate In-Home Pet Care in Southern Rhode Island</h1>
 
             <div class="photo-ribbon">
                 <div class="ribbon-item">
-                    <img src="assets/images/dog-happy-deck.jpg" alt="Happy dog">
+                    <img src="assets/images/dog-happy-deck.webp" width="600" height="600" alt="Happy dog">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/cat-in-basket.jpg" alt="Cat">
+                    <img src="assets/images/cat-in-basket.webp" width="600" height="600" alt="Cat resting in a basket">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/dogs-play-group.jpg" alt="Dogs playing">
+                    <img src="assets/images/dogs-play-group.webp" width="600" height="446" alt="Dogs playing">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/489220391_9505413869542346_6353262574758701948_n.jpg" alt="Dog and owner">
+                    <img src="assets/images/489220391_9505413869542346_6353262574758701948_n.webp" width="450" height="600" alt="Dog with a person">
                 </div>
             </div>
 
@@ -155,14 +160,17 @@
             <div class="services-grid">
                 <div class="service-item">
                     <h3>Dog Walking</h3>
+                    <p>Weekday walks and bathroom breaks, with visits from 10 to 60 minutes.</p>
                     <span class="service-price">Starting at $20</span>
                 </div>
                 <div class="service-item">
                     <h3>Pet Sitting</h3>
+                    <p>In-home visits for dogs, cats, fish and small animals.</p>
                     <span class="service-price">Starting at $20</span>
                 </div>
                 <div class="service-item">
                     <h3>Overnight Care</h3>
+                    <p>In-home overnight care with 10-hour and 12-hour options.</p>
                     <span class="service-price">Starting at $80</span>
                 </div>
             </div>
@@ -175,9 +183,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <h2 class="visually-hidden">About Kayla's Kritters Pet Care</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="assets/images/dog-on-blanket.jpg" alt="Dog relaxing indoors">
+                    <img src="assets/images/dog-on-blanket.webp" width="900" height="900" loading="lazy" alt="Dog relaxing indoors">
                 </div>
                 <div class="about-text">
                     <p>Pet care is personal. We think it should feel that way.</p>
@@ -328,6 +337,7 @@
     <!-- Gift Certificates -->
     <section id="jobs-and-gifts">
         <div class="container">
+            <h2 class="visually-hidden">Jobs and gift certificates</h2>
             <div class="jobs-and-gifts">
                 <div class="jobs-section">
                     <h3>Join Our Team</h3>
@@ -354,11 +364,11 @@
                     <div class="review-item">
                         <p class="review-author">Richard Walter</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -369,11 +379,11 @@
                     <div class="review-item">
                         <p class="review-author">Angela Kessler</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -384,11 +394,11 @@
                     <div class="review-item">
                         <p class="review-author">Desiree Dugan</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">9 years ago</p>
@@ -399,11 +409,11 @@
                     <div class="review-item">
                         <p class="review-author">Terri F</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">6 years ago</p>
@@ -414,11 +424,11 @@
                     <div class="review-item">
                         <p class="review-author">Sara W</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">9 years ago</p>
@@ -429,11 +439,11 @@
                     <div class="review-item">
                         <p class="review-author">Kristen Burton-Williams</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">6 years ago</p>
@@ -443,11 +453,11 @@
                     <div class="review-item">
                         <p class="review-author">Sonia Ott</p>
                         <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -500,6 +510,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -536,7 +548,7 @@
 
     <!-- Back to Top Paw Trail -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <img src="assets/images/Untitled design (8).png" alt="" aria-hidden="true" class="paw-trail">
+        <img src="assets/images/back-to-top-paw.webp" width="120" height="150" alt="" aria-hidden="true" class="paw-trail">
     </button>
 
     <script src="js/main.js"></script>

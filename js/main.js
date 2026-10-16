@@ -34,9 +34,14 @@ if (serviceAreaTrigger && serviceAreaDialog) {
 // Hamburger Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
-const navLinks = nav.querySelectorAll('a');
 
 if (hamburger && nav) {
+    const navLinks = nav.querySelectorAll('a');
+    function closeMenu() {
+        hamburger.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('active');
+    }
+
     hamburger.addEventListener('click', function() {
         const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
         hamburger.setAttribute('aria-expanded', !isExpanded);
@@ -46,16 +51,21 @@ if (hamburger && nav) {
     // Close menu when a link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            hamburger.setAttribute('aria-expanded', 'false');
-            nav.classList.remove('active');
+            closeMenu();
         });
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+            closeMenu();
+            hamburger.focus();
+        }
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
-            hamburger.setAttribute('aria-expanded', 'false');
-            nav.classList.remove('active');
+            closeMenu();
         }
     });
 }
