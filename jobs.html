@@ -13,14 +13,18 @@
     <meta property="og:url" content="https://kaylaskritterspetcare.com/jobs.html">
 
     <title>Join Our Team | Kayla's Kritters Pet Care</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-180.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Header & Navigation -->
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
-                <nav class="nav">
+                <nav class="nav" id="site-navigation" aria-label="Primary navigation">
                     <ul class="nav__list">
                         <li><a href="index.html" class="nav__link">Home</a></li>
                         <li><a href="index.html#services" class="nav__link">Services</a></li>
@@ -31,7 +35,7 @@
                         <li><a href="https://www.timetopet.com/portal/kaylas-kritters-pet-care" class="btn-portal" target="_blank" rel="noopener noreferrer">Client Portal</a></li>
                     </ul>
                 </nav>
-                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-controls="site-navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -40,16 +44,19 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Jobs Section -->
     <section id="jobs">
         <div class="container">
             <h1 style="text-align: center; margin-bottom: var(--space-lg); font-size: var(--font-size-xl);">Join Our Team</h1>
 
             <div style="max-width: 800px; margin: 0 auto;">
-                <div id="jobs-list"></div>
+                <div id="jobs-list" aria-live="polite"><p>Loading current openings. If listings do not appear, email <a href="mailto:kkpcjobs@gmail.com">kkpcjobs@gmail.com</a>.</p></div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -87,7 +94,7 @@
 
     <!-- Back to Top Paw Trail -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <img src="assets/images/Untitled design (8).png" alt="" aria-hidden="true" class="paw-trail">
+        <img src="assets/images/back-to-top-paw.webp" width="120" height="150" alt="" aria-hidden="true" class="paw-trail">
     </button>
 
     <script type="module" src="js/firebase-jobs.js"></script>

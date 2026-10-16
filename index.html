@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kayla's Kritters Pet Care - Compassionate in-home pet care serving Southern Rhode Island since 2010. Insured and CPR certified.">
+    <meta name="description" content="Dog walking, pet sitting and in-home overnight care in Richmond, Hope Valley, Wakefield, Kingston, Charlestown and West Kingston, RI. Contact Kayla's Kritters.">
     <meta name="theme-color" content="#D87BA8">
 
     <!-- Canonical URL -->
@@ -12,7 +12,7 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Kayla's Kritters Pet Care">
-    <meta property="og:description" content="Compassionate in-home pet care for dogs, cats, fish and small pets. Serving Southern Rhode Island since 2010.">
+    <meta property="og:description" content="Compassionate in-home pet care for dogs, cats, fish and small pets. Serving Southern Rhode Island since 2011.">
     <meta property="og:image" content="https://kaylaskritterspetcare.com/assets/images/kkpclogotransparent.png">
     <meta property="og:url" content="https://kaylaskritterspetcare.com/">
 
@@ -25,7 +25,7 @@
       "url": "https://kaylaskritterspetcare.com",
       "telephone": "+1-401-932-3303",
       "email": "kaylaskritters@gmail.com",
-      "description": "Compassionate in-home pet care for dogs, cats, fish and small pets. Services include dog walking, pet sitting, and overnight care serving Southern Rhode Island since 2010.",
+      "description": "Compassionate in-home pet care for dogs, cats, fish and small pets. Services include dog walking, pet sitting, and overnight care serving Southern Rhode Island since 2011.",
       "image": "https://kaylaskritterspetcare.com/assets/images/kkpclogotransparent.png",
       "areaServed": [
         {
@@ -63,14 +63,18 @@
     </script>
 
     <title>Kayla's Kritters Pet Care | Pet Sitting & Dog Walking in Southern RI</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon-180.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Header & Navigation -->
     <header class="header">
         <div class="container">
             <div class="header__wrapper">
-                <nav class="nav">
+                <nav class="nav" id="site-navigation" aria-label="Primary navigation">
                     <ul class="nav__list">
                         <li><a href="#services" class="nav__link">Services</a></li>
                         <li><a href="#rates" class="nav__link">Rates</a></li>
@@ -81,7 +85,7 @@
                         <li><a href="https://www.timetopet.com/portal/kaylas-kritters-pet-care" class="btn-portal" target="_blank" rel="noopener noreferrer">Client Portal</a></li>
                     </ul>
                 </nav>
-                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-controls="site-navigation" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -90,27 +94,28 @@
         </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Brand & Opening Composition -->
     <div class="brand-area">
         <div class="container">
             <div class="brand-logo">
-                <img src="assets/images/kkpclogotransparent.png" alt="Kayla's Kritters Pet Care - Compassionate In-Home Pet Care">
+                <img src="assets/images/kkpclogotransparent.webp" width="900" height="360" fetchpriority="high" alt="Kayla's Kritters Pet Care - Compassionate In-Home Pet Care">
             </div>
 
             <h1 style="font-size: var(--font-size-lg); text-align: center; margin: var(--space-md) 0 var(--space-lg) 0; color: var(--color-text-dark); font-weight: var(--font-weight-semibold);">Compassionate In-Home Pet Care in Southern Rhode Island</h1>
 
             <div class="photo-ribbon">
                 <div class="ribbon-item">
-                    <img src="assets/images/dog-happy-deck.jpg" alt="Happy dog">
+                    <img src="assets/images/dog-happy-deck.webp" width="600" height="600" alt="Smiling brindle dog lying in the sun on a wooden deck">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/cat-in-basket.jpg" alt="Cat">
+                    <img src="assets/images/cat-in-basket.webp" width="600" height="600" alt="Cat resting in a basket">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/dogs-play-group.jpg" alt="Dogs playing">
+                    <img src="assets/images/dogs-play-group.webp" width="600" height="446" alt="Four dogs sitting together on a tile floor, looking up at the camera">
                 </div>
                 <div class="ribbon-item">
-                    <img src="assets/images/489220391_9505413869542346_6353262574758701948_n.jpg" alt="Dog and owner">
+                    <img src="assets/images/489220391_9505413869542346_6353262574758701948_n.webp" width="450" height="600" alt="Black dog holding a plush toy as a person's hand grips the other end">
                 </div>
             </div>
 
@@ -119,11 +124,11 @@
             </p>
 
             <div class="trust-banner">
-                Established 2010 • Insured • Pet CPR Certified • Accepting New Clients
+                Established 2011 • Insured • Pet CPR Certified • Accepting New Clients
             </div>
 
             <div class="brand-cta">
-                <a href="mailto:kaylaskritters@gmail.com" class="btn-primary">Request Pet Care</a>
+                <button type="button" class="btn-primary" data-open-inquiry>Request Pet Care</button>
             </div>
         </div>
     </div>
@@ -155,14 +160,17 @@
             <div class="services-grid">
                 <div class="service-item">
                     <h3>Dog Walking</h3>
+                    <p>Weekday walks and bathroom breaks, with visits from 10 to 60 minutes.</p>
                     <span class="service-price">Starting at $20</span>
                 </div>
                 <div class="service-item">
                     <h3>Pet Sitting</h3>
+                    <p>In-home visits for dogs, cats, fish and small animals.</p>
                     <span class="service-price">Starting at $20</span>
                 </div>
                 <div class="service-item">
                     <h3>Overnight Care</h3>
+                    <p>In-home overnight care with 10-hour and 12-hour options.</p>
                     <span class="service-price">Starting at $80</span>
                 </div>
             </div>
@@ -175,9 +183,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <h2 class="visually-hidden">About Kayla's Kritters Pet Care</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="assets/images/dog-on-blanket.jpg" alt="Dog relaxing indoors">
+                    <img src="assets/images/dog-on-blanket.webp" width="900" height="900" loading="lazy" alt="Dog relaxing indoors">
                 </div>
                 <div class="about-text">
                     <p>Pet care is personal. We think it should feel that way.</p>
@@ -328,6 +337,7 @@
     <!-- Gift Certificates -->
     <section id="jobs-and-gifts">
         <div class="container">
+            <h2 class="visually-hidden">Jobs and gift certificates</h2>
             <div class="jobs-and-gifts">
                 <div class="jobs-section">
                     <h3>Join Our Team</h3>
@@ -353,12 +363,12 @@
                     <!-- Google Review 1: Richard Walter -->
                     <div class="review-item">
                         <p class="review-author">Richard Walter</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -368,12 +378,12 @@
                     <!-- Google Review 2: Angela Kessler -->
                     <div class="review-item">
                         <p class="review-author">Angela Kessler</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -383,12 +393,12 @@
                     <!-- Google Review 4: Desiree Dugan -->
                     <div class="review-item">
                         <p class="review-author">Desiree Dugan</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">9 years ago</p>
@@ -398,12 +408,12 @@
                     <!-- Google Review 5: Terri F -->
                     <div class="review-item">
                         <p class="review-author">Terri F</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">6 years ago</p>
@@ -413,12 +423,12 @@
                     <!-- Google Review 6: Sara W -->
                     <div class="review-item">
                         <p class="review-author">Sara W</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">9 years ago</p>
@@ -428,12 +438,12 @@
                     <!-- Google Review 7: Kristen Burton-Williams (no text) -->
                     <div class="review-item">
                         <p class="review-author">Kristen Burton-Williams</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">6 years ago</p>
@@ -442,12 +452,12 @@
                     <!-- Google Review 8: Sonia Ott (no text) -->
                     <div class="review-item">
                         <p class="review-author">Sonia Ott</p>
-                        <div class="review-rating" aria-label="5 out of 5 stars">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
-                            <img src="assets/images/single paw print (1).png" alt="" class="review-paw" aria-hidden="true">
+                        <div class="review-rating" role="img" aria-label="5 out of 5 stars">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
+                            <img src="assets/images/review-paw.webp" width="32" height="40" alt="" class="review-paw" aria-hidden="true">
                         </div>
                         <p class="review-source">Google Review</p>
                         <p class="review-date">7 years ago</p>
@@ -488,7 +498,8 @@
                     <div class="journey-item">
                         <h3>New Clients</h3>
                         <p>Ready to talk about care for your pet?</p>
-                        <a href="mailto:kaylaskritters@gmail.com" class="btn-primary">Email Kayla's Kritters</a>
+                        <button type="button" class="btn-primary" data-open-inquiry>Request Pet Care</button>
+                        <p class="inquiry-email-option">Prefer email? <a href="mailto:kaylaskritters@gmail.com">Email Kayla's Kritters</a>.</p>
                     </div>
                     <div class="journey-item">
                         <h3>Existing Clients</h3>
@@ -499,6 +510,80 @@
             </div>
         </div>
     </section>
+
+    </main>
+
+    <dialog id="inquiry-dialog" class="inquiry-dialog" aria-labelledby="inquiry-title" aria-describedby="inquiry-intro">
+        <div class="inquiry-dialog__header">
+            <div>
+                <h2 id="inquiry-title">Request Pet Care</h2>
+                <p id="inquiry-intro">Tell us a little about the care you need. This inquiry is not a booking.</p>
+            </div>
+            <button type="button" class="inquiry-close" aria-label="Close request form">&times;</button>
+        </div>
+
+        <form id="pet-care-inquiry" name="pet-care-inquiry" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="pet-care-inquiry">
+            <input type="hidden" name="pets" id="inquiry-pets-summary">
+            <p class="inquiry-honeypot"><label>Leave this field blank <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+            <fieldset>
+                <legend>Contact</legend>
+                <div class="inquiry-grid">
+                    <div class="inquiry-field"><label for="inquiry-name">Full name <span aria-hidden="true">*</span></label><input id="inquiry-name" name="full-name" type="text" autocomplete="name" required maxlength="120"></div>
+                    <div class="inquiry-field"><label for="inquiry-email">Email <span aria-hidden="true">*</span></label><input id="inquiry-email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
+                    <div class="inquiry-field"><label for="inquiry-phone">Phone number</label><input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+                    <div class="inquiry-field"><label for="inquiry-town">Town <span aria-hidden="true">*</span></label><input id="inquiry-town" name="town" type="text" autocomplete="address-level2" required maxlength="100"></div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Care</legend>
+                <div class="inquiry-grid">
+                    <div class="inquiry-field"><label for="inquiry-service">Service requested <span aria-hidden="true">*</span></label><select id="inquiry-service" name="service" required><option value="">Choose a service</option><option>Dog Walking</option><option>Pet Sitting / Drop-in Visits</option><option>Overnight Care</option><option>Other</option></select></div>
+                    <div class="inquiry-field"><label for="inquiry-frequency">Care frequency <span aria-hidden="true">*</span></label><select id="inquiry-frequency" name="frequency" required><option value="">Choose a frequency</option><option value="one-time">One-time / Specific Dates</option><option value="recurring">Recurring / Ongoing</option><option value="unsure">Not Sure Yet</option></select></div>
+                </div>
+                <div id="inquiry-other-service" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-other-service-description">Describe the service you need <span aria-hidden="true">*</span></label><input id="inquiry-other-service-description" name="other-service-description" type="text" maxlength="300"></div>
+                <div id="inquiry-one-time" class="inquiry-conditional inquiry-grid" hidden>
+                    <div class="inquiry-field"><label for="inquiry-start">Start date <span aria-hidden="true">*</span></label><input id="inquiry-start" name="start-date" type="date"></div>
+                    <div class="inquiry-field"><label for="inquiry-end">End date <span aria-hidden="true">*</span></label><input id="inquiry-end" name="end-date" type="date"></div>
+                </div>
+                <div id="inquiry-recurring" class="inquiry-conditional inquiry-grid" hidden>
+                    <div class="inquiry-field"><label for="inquiry-preferred-start">Preferred start date</label><input id="inquiry-preferred-start" name="preferred-start-date" type="date"></div>
+                    <div class="inquiry-field"><label for="inquiry-recurring-days">Preferred days or frequency <span aria-hidden="true">*</span></label><input id="inquiry-recurring-days" name="recurring-days" type="text" maxlength="200" placeholder="For example, weekday mornings"></div>
+                </div>
+                <div id="inquiry-unsure" class="inquiry-conditional inquiry-field" hidden><label for="inquiry-date-notes">Tell us about your scheduling needs</label><textarea id="inquiry-date-notes" name="date-notes" rows="2" maxlength="400"></textarea></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Pets</legend>
+                <div id="inquiry-pet-list">
+                    <div class="inquiry-pet" data-pet>
+                        <div class="inquiry-pet__heading"><h3>Pet 1</h3><button type="button" class="inquiry-remove-pet" hidden>Remove Pet</button></div>
+                        <div class="inquiry-grid">
+                            <div class="inquiry-field"><label for="pet-name-1">Pet name <span aria-hidden="true">*</span></label><input id="pet-name-1" data-pet-name type="text" required maxlength="100"></div>
+                            <div class="inquiry-field"><label for="pet-type-1">Pet type <span aria-hidden="true">*</span></label><input id="pet-type-1" data-pet-type type="text" required maxlength="100" placeholder="For example, dog or cat"></div>
+                            <div class="inquiry-field"><label for="pet-breed-1">Breed</label><input id="pet-breed-1" data-pet-breed type="text" maxlength="100"></div>
+                            <div class="inquiry-field"><label for="pet-size-1">Size</label><select id="pet-size-1" data-pet-size><option value="">Select if known</option><option>Small</option><option>Medium</option><option>Large</option></select></div>
+                        </div>
+                        <div class="inquiry-field"><label for="pet-needs-1">Medications or special care needs (brief)</label><textarea id="pet-needs-1" data-pet-needs rows="2" maxlength="500"></textarea></div>
+                    </div>
+                </div>
+                <button type="button" id="inquiry-add-pet" class="inquiry-secondary">Add Another Pet</button>
+            </fieldset>
+
+            <div class="inquiry-field"><label for="inquiry-comments">Additional comments or questions</label><textarea id="inquiry-comments" name="comments" rows="3" maxlength="1500"></textarea></div>
+            <p class="inquiry-privacy">We use your details to respond to this inquiry. Please do not include payment information or detailed medical histories. You can also <a href="mailto:kaylaskritters@gmail.com">email us directly</a>.</p>
+            <p id="inquiry-error" class="inquiry-error" role="alert" tabindex="-1" hidden></p>
+            <div class="inquiry-actions"><button type="button" class="inquiry-secondary inquiry-cancel">Cancel</button><button type="submit" class="btn-primary" id="inquiry-submit">Send Inquiry</button></div>
+        </form>
+
+        <div id="inquiry-success" class="inquiry-success" role="status" hidden>
+            <h3 tabindex="-1">Thank you for reaching out.</h3>
+            <p>Your inquiry was sent. Kayla's Kritters will review it and follow up. This is not a confirmed booking.</p>
+            <button type="button" class="btn-primary inquiry-done">Done</button>
+        </div>
+    </dialog>
 
     <!-- Footer -->
     <footer class="footer">
@@ -536,9 +621,10 @@
 
     <!-- Back to Top Paw Trail -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <img src="assets/images/Untitled design (8).png" alt="" aria-hidden="true" class="paw-trail">
+        <img src="assets/images/back-to-top-paw.webp" width="120" height="150" alt="" aria-hidden="true" class="paw-trail">
     </button>
 
     <script src="js/main.js"></script>
+    <script src="js/inquiry-form.js"></script>
 </body>
 </html>
