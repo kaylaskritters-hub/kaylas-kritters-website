@@ -73,7 +73,7 @@ if (hamburger && nav) {
 // Job Listings
 function renderJobs() {
     const jobsList = document.getElementById('jobs-list');
-    if (!jobsList || typeof jobs === 'undefined') return;
+    if (!jobsList || typeof jobs === 'undefined' || !Array.isArray(jobs)) return;
 
     const activeJobs = jobs.filter(job => job.active === true);
 
