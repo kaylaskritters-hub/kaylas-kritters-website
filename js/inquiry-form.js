@@ -92,14 +92,15 @@ if (inquiryDialog && inquiryForm) {
     }
 
     function petSummary() {
-        const pets = [...petList.querySelectorAll('[data-pet]')].map(pet => ({
-            name: pet.querySelector('[data-pet-name]').value.trim(),
-            type: pet.querySelector('[data-pet-type]').value.trim(),
-            breed: pet.querySelector('[data-pet-breed]').value.trim(),
-            size: pet.querySelector('[data-pet-size]').value,
-            specialCare: pet.querySelector('[data-pet-needs]').value.trim()
-        }));
-        return JSON.stringify(pets, null, 2);
+        const readable = value => value.trim().replace(/\r\n?/g, '\n').replace(/\n/g, '\n    ') || 'Not provided';
+        return [...petList.querySelectorAll('[data-pet]')].map((pet, index) => [
+            `Pet ${index + 1}`,
+            `Name: ${readable(pet.querySelector('[data-pet-name]').value)}`,
+            `Type: ${readable(pet.querySelector('[data-pet-type]').value)}`,
+            `Breed: ${readable(pet.querySelector('[data-pet-breed]').value)}`,
+            `Size: ${readable(pet.querySelector('[data-pet-size]').value)}`,
+            `Special care: ${readable(pet.querySelector('[data-pet-needs]').value)}`
+        ].join('\n')).join('\n\n');
     }
 
     function submissionData() {
